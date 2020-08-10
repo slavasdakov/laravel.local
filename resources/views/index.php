@@ -5,7 +5,7 @@
     <title>Document</title>
 </head>
 <body>
-<?php include "menu.php" ?>
+<?php include "menu/menu.php" ?>
 Здравствуйте!
 </body>
 </html>

@@ -5,9 +5,6 @@
     <title>Document</title>
 </head>
 <body>
-<?php include "menu.php" ?>
-НОВОСТИ<br>
-<a href="/new">Новость </a>
+Экономические новости
 </body>
 </html>
-

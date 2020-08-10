@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,7 +5,8 @@
     <title>Document</title>
 </head>
 <body>
-<?php include "menu/menu.php" ?>
-О нас
+<?php include dirname(__DIR__) . '/' . "menu/menu.php" ?>
+Эта новость
 </body>
 </html>
+

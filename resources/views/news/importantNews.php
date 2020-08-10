@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,7 +5,6 @@
     <title>Document</title>
 </head>
 <body>
-<?php include "menu/menu.php" ?>
-О нас
+Главные новости
 </body>
 </html>
