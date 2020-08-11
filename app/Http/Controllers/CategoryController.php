@@ -3,22 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\News;
+use App\Category;
 
 class CategoryController extends Controller
 {
     public function index(){
-        return view('news.categoryNews');
+        return view('news.categoryNews')->with('news', Category::getCategory());
     }
-    public function economic(){
-        return view('news.economicNews');
+
+    public function show($categoryId){
+        return view('news.CategoryOne')->with('news',News::getCategoryNews($categoryId));
     }
-    public function political(){
-        return view('news.politicalNews');
-    }
-    public function important(){
-        return view('news.importantNews');
-    }
-    public function sport(){
-        return view('news.sportNews');
-    }
+
 }

@@ -12,7 +12,6 @@
     <li><a href="<?=route('AboutAs')?>">О нас</a></li>
     <li><a href = "<?=route('News')?>"> Новости</a></li>
     <li><a href = "<?=route('CategoryNews')?>"> Категории новостей</a></li>
-
     <li><a href = "<?=route('admin.index')?>"> Админка</a></li>
 </ul>
 </html>

@@ -1,17 +1,17 @@
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
 
+    <title>Document</title>
 </head>
 <body>
 
-    <a href="<?=route('Home')?>">Главная</a>
-    <a href="<?=route('ImportantNews')?>">Главные новости</a>
-    <a href="<?=route('EconomicNews')?>">Новости на мировом рынке</a>
-    <a href="<?=route('SportNews')?>">Новости спорта</a>
-    <a href="<?=route('PoliticalNews')?>">Новости политики</a>
+<a href="<?=route('Home')?>">Главная</a><br>
 
+<? foreach ($news as $item): ?>
+    <a href="<?=route('CategoryOne' , $item['id'])?>"><?=$item['category']?></a>
+<?php endforeach?>
 
 </body>
 </html>
+
