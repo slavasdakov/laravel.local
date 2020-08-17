@@ -2,28 +2,38 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Category
 {
-   private static $category = [
-       [
-           'id' => 1,
-           'category' => 'sport'
+    private static $categories = [
+        1 => [
+            'id' => 1,
+            'title' => 'Спорт',
+            'slug' => 'sport'
+        ],
+        2 => [
+            'id' => 2,
+            'title' => 'Политика',
+            'slug' => 'politics'
+        ],
+    ];
 
-       ],
-       [
-           'id' => 2,
-           'category' => 'politic'
-       ],
-       [
-           'id' => 3,
-           'category' => 'economic'
-       ]
-   ];
-    public static function getCategory()
-    {
-        return static::$category;
+    public static function getCategories() {
+        return static::$categories;
     }
 
+    public static function getCategoryIdByName($name) {
+        $id = null;
+        foreach (static::$categories as $category) {
+            if ($category['slug'] == $name) {
+                $id = $category['id'];
+                break;
+            }
+        }
+        return $id;
+    }
+
+    public static function getCategoryById($id) {
+        return static::$categories[$id];
+    }
 }

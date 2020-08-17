@@ -2,27 +2,54 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use phpDocumentor\Reflection\Types\Static_;
 
-class News extends Model
+class News
 {
-    private static $category_news = [];
     private static $news = [
-         [
+        1 => [
             'id' => 1,
             'title' => 'Новость 1',
-            'text' => 'Новость №1',
-            'category_id' => '1'
-
+            'text' => 'А у нас новость 1 и она очень хорошая!',
+            'isPrivate' => false,
+            'category' => 1
         ],
-         [
+
+        2 => [
             'id' => 2,
             'title' => 'Новость 2',
-            'text' => 'Новость №2',
-            'category_id' => '2'
-        ]
+            'text' => 'А у нас новость2 и она очень хорошая!',
+            'isPrivate' => true,
+            'category' => 1
+        ],
+        3 => [
+            'id' => 3,
+            'title' => 'Новость 3',
+            'text' => 'А у нас новость 3 и она очень хорошая!',
+            'isPrivate' => false,
+            'category' => 2
+        ],
+
+        4 => [
+            'id' => 4,
+            'title' => 'Новость 4',
+            'text' => 'А у нас новость4 и она очень хорошая!',
+            'isPrivate' => true,
+            'category' => 2
+        ],
+
+
     ];
+    public static function getNewsByCategoryName($name) {
+        $id = Category::getCategoryIdByName($name);
+        $news = [];
+        foreach (static::$news as $item) {
+            if ($item['category'] == $id) {
+                $news[] = $item;
+            }
+        }
+        return $news;
+    }
+
 
     public static function getNews()
     {
@@ -31,43 +58,7 @@ class News extends Model
 
     public static function getNewsId($id)
     {
-        foreach (static::getNews() as $news) {
-            if ($news['id'] == $id) {
-                return $news;
-            }
-        }
-        return null;
+        return static::$news[$id];
     }
 
-    public static function getCategoryNews($categoryId)
-    {
-        foreach (static::getNews() as $news) {
-            if ($news['category_id'] == $categoryId ) {
-
-                static::$category_news[] = $news;
-            }
-        }
-        return static::$category_news;
-
-
-    }
 }
-
-/*
- *
-        for($i=0; $i <= count(static::$news); $i++){
-        if(static::$news[$i]['id'] == static::$news[$i][$id] ){
-            return static::$news[$i];
-        }
-        }
-        return null;
-
-
-
-foreach (static::getNews() as $news){
-    if ($news['id'] = $id){
-        return $news;
-    }
-} return null;
- */
-

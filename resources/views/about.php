@@ -1,12 +1,2 @@
-
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
-<?php include "menu/menu.php" ?>
-О нас
-</body>
-</html>
+<?php include "menu.php" ?>
+<h1>О нас</h1>

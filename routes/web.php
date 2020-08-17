@@ -10,34 +10,42 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(
-    ['prefix' =>  'admin',
-      'namespace' => 'Admin',
-        'as' => 'admin.'
+/*
+Route::get('/', [
+    'uses' => 'HomeController@index',
+    'as' = 'Home'
+    ]);
+*/
+Route::get('/', 'HomeController@index')->name('Home');
 
-    ],
 
-    function (){
+Route::group([
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
+    'as' => 'admin.'
+], function () {
     Route::get('/', 'IndexController@index')->name('index');
     Route::get('/test1', 'IndexController@test1')->name('test1');
     Route::get('/test2', 'IndexController@test2')->name('test2');
-}
-);
+});
 
+Route::group([
+    'prefix' => 'news',
+    'as' => 'news.'
+], function () {
+    Route::get('/', 'NewsController@index')->name('index');
+    Route::get('/one/{id}', 'NewsController@show')->name('show');
+    Route::get('/add', 'NewsController@add')->name('add');
 
-Route::get('/', 'HomeController@index')->name('Home');
-Route::get('/about', function () {
-    return view('about');
-})->name('AboutAs');
+    Route::group([
+        'as' => 'category.'
+    ], function () {
+        Route::get('/categories', 'CategoryController@index')->name('index');
+        Route::get('/category/{name}', 'CategoryController@show')->name('show');
+    });
+});
 
-Route::get('/news', 'NewsController@index')->name('News');
+Route::view('/vue', 'vue')->name('vue');
 
+Auth::routes();
 
-Route::get('/news/category', 'CategoryController@index')->name('CategoryNews');
-Route::get('/news/category/{categoryId}', 'CategoryController@show')->name('CategoryOne');
-
-
-Route::get('/news/{id}', 'NewsController@show')->name('NewsOne');
-
-
-Route::get('/home', 'HomeController@index')->name('home');
