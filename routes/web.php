@@ -27,6 +27,8 @@ Route::group([
     Route::get('/', 'IndexController@index')->name('index');
     Route::get('/test1', 'IndexController@test1')->name('test1');
     Route::get('/test2', 'IndexController@test2')->name('test2');
+    Route::match(['get', 'post'], '/create', 'IndexController@create')->name('create');
+
 });
 
 Route::group([
@@ -35,7 +37,6 @@ Route::group([
 ], function () {
     Route::get('/', 'NewsController@index')->name('index');
     Route::get('/one/{id}', 'NewsController@show')->name('show');
-    Route::get('/add', 'NewsController@add')->name('add');
 
     Route::group([
         'as' => 'category.'

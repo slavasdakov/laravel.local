@@ -13,10 +13,6 @@ class NewsController extends Controller
 
     public function show($id) {
             return view('news.One')->with('news', News::getNewsId($id));
-    }
-
-    public function add() {
-        return view('news.add');
-    }
+     }
 
 }

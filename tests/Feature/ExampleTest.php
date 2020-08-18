@@ -15,7 +15,17 @@ class ExampleTest extends TestCase
     public function testBasicTest()
     {
         $response = $this->get('/');
-
         $response->assertStatus(200);
+        $response->assertSeeText('Добро пожаловать!');
+
+    }
+
+    public function testBasicTest2()
+    {
+        $response = $this->get('/');
+        $response->assertStatus(200);
+        $response->assertSeeText('Добро пожаловать!');
+        $this->call('GET' , '/');
+       $response->assertViewIs('index');
     }
 }
